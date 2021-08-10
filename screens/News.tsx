@@ -14,7 +14,7 @@ const News = ({ navigation }) => {
     }, [])
 
     const newsResponse = async() => {
-        const response = await newsAPI.get('everything?q=motogp&from=2021-07-09&sortBy=publishedAt&apiKey=e8b4ba7cadff449399a1fb30c849b5e2');
+        const response = await newsAPI.get('everything?q=motogp&from=2021-07-09&sortBy=publishedAt&pageSize=50&apiKey=e8b4ba7cadff449399a1fb30c849b5e2');
         setNews(response.data);
         console.log(news);
     }
