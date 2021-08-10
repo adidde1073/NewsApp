@@ -3,7 +3,7 @@ import { View, StyleSheet, Text, Button, FlatList } from "react-native";
 
 import NewsCard from '../components/NewsCard'
 
-import newsAPI from '../api/newsAPI';
+import newsAPI from '../api/pseudoAPI.json';
 
 const News = ({ navigation }) => {
 
@@ -14,9 +14,9 @@ const News = ({ navigation }) => {
     }, [])
 
     const newsResponse = async() => {
-        const response = await newsAPI.get('everything?q=motogp&from=2021-07-09&sortBy=publishedAt&pageSize=50&apiKey=e8b4ba7cadff449399a1fb30c849b5e2');
-        setNews(response.data);
-        console.log(news);
+        const response = newsAPI;
+        setNews(response.articles);
+        console.log(response.articles);
     }
 
     if(!news) {
@@ -25,7 +25,7 @@ const News = ({ navigation }) => {
 
     return (
         <View>
-            <FlatList data = {news.articles}
+            <FlatList data = {news}
             keyExtractor = {(item, index) => 'key' + index}
             renderItem = {({item}) => {
                 return <NewsCard article = { item}/> 
